@@ -32,7 +32,7 @@ require("./utils/db-connection");
 const server = http.createServer(app);
 
 //Get port from environment and store in Express.
-const port = config.port || 4000;
+const port = process.env.PORT || 4000;
 app.set("port", port);
 
 server.listen(port, console.log(`Listening on port ${port}`));
