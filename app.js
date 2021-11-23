@@ -28,6 +28,15 @@ app.use(cors());
 
 require("./utils/db-connection");
 
+//Create HTTP server.
+const server = http.createServer(app);
+
+//Get port from environment and store in Express.
+const port = config.port || 4000;
+app.set("port", port);
+
+server.listen(port, console.log(`Listening on port ${port}`));
+
 // FOR API
 app.get("/", (req, res) => {
   res.json("Backend operational");
@@ -54,14 +63,5 @@ app.use((req, res) => {
   console.log("Error: No route found or Wrong method name");
   jsonResponse(res, errors.internalServer(true));
 });
-
-//Create HTTP server.
-const server = http.createServer(app);
-
-//Get port from environment and store in Express.
-const port = config.port || 4000;
-app.set("port", port);
-
-server.listen(port, console.log(`Listening on port ${port}`));
 
 module.exports = app;
