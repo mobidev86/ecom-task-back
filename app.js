@@ -60,7 +60,7 @@ app.use("/offer", offer);
 
 // catch 404 and forward to error handler
 app.use((req, res) => {
-  console.log("Error: No route found or Wrong method name");
+  console.log("Error: No route found or Wrong method name", req.url);
   jsonResponse(res, errors.internalServer(true));
 });
 
